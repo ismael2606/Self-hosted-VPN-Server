@@ -81,31 +81,30 @@ Once the Pi boots back up, your network loop is completely configured.
 ```bash
    pivpn add
 ```
-Press Enter to skip the optional virtual IP range step.
+2. Press Enter to skip the optional virtual IP range step.
 
-Type a clear name for your device (e.g., iPhone) and hit Enter.
+3. Type a clear name for your device (e.g., iPhone) and hit Enter.
 
 ## Connect a Phone:
-* Run pivpn -qr, select your profile number, and scan the terminal QR code with the official mobile WireGuard app.
 
-* Test: Turn off your phone's Wi-Fi, toggle the WireGuard tunnel ON over cellular data, and verify you have full internet access. You can run pivpn -c on the Pi to see your active data handshake packets transferring back and forth.
+1. Run pivpn -qr, select your profile number, and scan the terminal QR code with the official mobile WireGuard app.
+
+2. Test: Turn off your phone's Wi-Fi, toggle the WireGuard tunnel ON over cellular data, and verify you have full internet access. You can run `pivpn -c` on the Pi to see your active data handshake packets transferring back and forth.
 
 ## For Your Laptop or Desktop (macOS / Windows / Linux)
 
 1. **Extract the Configuration File:** You must pull the unique `.conf` file generated for your laptop from the Pi WireGuard directory down onto your local computer. Use  standard secure copy (SCP) routine from your laptop's terminal:
    ```bash
    scp pi@local_ip_here:~/configs/YourLaptopProfile.conf ./
-(Replace YourLaptopProfile.conf with the exact profile name generated during the execution of pivpn add).
-
+   
 2. Import into the Client: * Download and install the official desktop client from wireguard.com/install.
 
 3. Open the WireGuard application interface, click Import tunnel(s) from file (or click the + dropdown menu), and select the downloaded .conf file.
 
-
 4. Test: Tether your laptop to an untrusted external network connection (e.g., your phone's cellular hotspot or a public Wi-Fi network). Do not test while the laptop is sitting directly on your home Wi-Fi, or it will short-circuit the external gateway routing logic.
 
-* Toggle the WireGuard tunnel switch to ON within the application interface.
+   * Toggle the WireGuard tunnel switch to ON within the application interface.
 
-* Open your laptop's terminal or web browser to ensure you have internet access.
+   * Open your laptop's terminal or web browser to ensure you have internet access.
 
 
