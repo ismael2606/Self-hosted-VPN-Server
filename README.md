@@ -3,4 +3,4 @@
 
 ## Tech Stack 💻
 
-* Operating System: Raspberry Pi OS (Debian 12 Bookworm, 64-bit Architecture)
+* **Operating System:** Raspberry Pi OS (Debian 12 Bookworm, 64-bit Architecture)
