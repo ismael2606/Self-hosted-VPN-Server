@@ -1,0 +1,7 @@
+# Ignore actual WireGuard peer configuration files containing private keys
+*.conf
+configs/*.conf
+
+# Ignore local debugging logs or tokens
+*.log
+.env
