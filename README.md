@@ -10,6 +10,18 @@
 * **Automation:** Linux cron engine + Bash Shell scripts
 
 
+Step-by-Step Production Deployment
+The modular execution logs we updated previously, organized in logical, linear order:
+
+Phase 1: Perimeter Firewalls: Setting the Static DHCP reservation and opening UDP port 51820 on your ISP gateway.
+
+Phase 2: Automation Pipelines: Provisioning the cron daemon and the shell script to dynamically map your rotating public IP to your DuckDNS pointer.
+
+Phase 3: WireGuard Orchestration: Running the deployment wrapper and configuring security parameters (like automated daily system updates).
+
+Phase 4: Client Enrollment: Securely extracting laptop profiles via Secure Copy Protocol (scp) and generating mobile QR code sheets.
+
+
 ## Management commands cheat sheet 📋
 
 A quick-reference table or list for managing the infrastructure after deployment
