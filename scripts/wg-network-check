@@ -1,0 +1,27 @@
+#!/bin/bash
+# Quick Health-Check Matrix for Self-Hosted WireGuard Interface
+
+echo "=== [1/3] Checking wg0 Virtual Interface Status ==="
+if ip link show wg0 &> /dev/null; then
+    echo "[PASS] WireGuard wg0 interface is UP and operational."
+else
+    echo "[FAIL] WireGuard wg0 interface is DOWN or not compiled."
+fi
+
+echo "=== [2/3] Checking Port 51820 Binding ==="
+if sudo ss -uluptn | grep -q ":51820"; then
+    echo "[PASS] Linux Kernel is actively listening on UDP Port 51820."
+else
+    echo "[FAIL] No listener detected on UDP 51820. Check WireGuard service status."
+fi
+
+echo "=== [3/3] Checking Dynamic DNS Resolution ==="
+# Place your placeholder domain here
+CURRENT_RESOLVED_IP=$(nslookup yourdomain.duckdns.org | awk '/^Address: / { print $2 }')
+ACTUAL_WAN_IP=$(curl -s ifconfig.me)
+
+if [ "$CURRENT_RESOLVED_IP" == "$ACTUAL_WAN_IP" ]; then
+    echo "[PASS] DDNS Sync matches current WAN Endpoint ($ACTUAL_WAN_IP)."
+else
+    echo "[WARN] DDNS Mismatch! Resolved: $CURRENT_RESOLVED_IP | Actual: $ACTUAL_WAN_IP"
+fi
